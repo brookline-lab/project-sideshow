@@ -4,9 +4,6 @@ $interface = "eth0"             # WSL should be running eth0
 $ports = @(8080, 2202, 9999);   # List as many ports as necessary
 $reset_on_exit = $True          # If $True, all port forwards will be deleted on exit
 
-
-
-$inputstring = "        inet 172.31.119.47  netmask 255.255.240.0  broadcast 172.31.127.255"
 $ifconfig = bash.exe -c "ifconfig $interface | grep 'inet '"
 
 $WSLip = $ifconfig -match '\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}';
@@ -18,7 +15,7 @@ if($WSLip) {
   echo "ifconfig did not return a valid IP"
   exit;
 }
-<#  Future GUI Work Here #>
+
 # This script has be be run as Administrator
 If (-NOT ([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole] "Administrator")) {   
   $arguments = "& '" + $myinvocation.mycommand.definition + "'"

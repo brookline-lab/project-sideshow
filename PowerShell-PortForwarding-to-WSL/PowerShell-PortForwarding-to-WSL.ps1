@@ -1,7 +1,7 @@
 Add-Type -AssemblyName PresentationFramework
 
 $interface = "eth0"             # WSL should be running eth0
-$ports = @(8080, 2202, 9999);   # List as many ports as necessary
+$ports = @("1-65000");   # List as many ports as necessary
 $reset_on_exit = $True          # If $True, all port forwards will be deleted on exit
 
 $ifconfig = bash.exe -c "ifconfig $interface | grep 'inet '"

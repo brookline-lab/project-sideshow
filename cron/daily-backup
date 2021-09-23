@@ -1,0 +1,12 @@
+#!/bin/bash
+DATE=$(date +%Y-%m-%d)
+BACKUP_DIR=~/backup		# sample destination
+SOURCE_DIR=~/test-project	# sample source
+
+
+# tar gz the SOURCE_DIR, place the archive in BACKUP_DIR
+tar -zcvpf $BACKUP_DIR/world-$DATE.tar.gz $SOURCE_DIR
+
+
+# remove backups older than 5 days
+find $BACKUP_DIR/* -mtime +5 -exec rm{} \;
